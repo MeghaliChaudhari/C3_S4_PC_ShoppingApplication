@@ -39,10 +39,10 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/deleteproduct/{productId}")
-    public ResponseEntity<?> deleteProduct(@RequestBody User user,@PathVariable int productId) throws ProductNotFoundException, UserNotFoundException {
+    @DeleteMapping("/deleteproduct/{productId}/{userId}")
+    public ResponseEntity<?> deleteProduct(@PathVariable int userId,@PathVariable int productId) throws ProductNotFoundException, UserNotFoundException {
         try {
-            return new ResponseEntity<>(userServiceImpl.deleteProductForUser(user.getUserId(), productId),HttpStatus.OK);
+            return new ResponseEntity<>(userServiceImpl.deleteProductForUser(userId, productId),HttpStatus.OK);
         }catch (UserNotFoundException e){
             throw new UserNotFoundException();
         }catch (ProductNotFoundException e){

@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User deleteProductForUser(int userId, int productId) throws UserNotFoundException, ProductNotFoundException {
         boolean flag = false;
+        System.out.println(userId + productId);
         if (userRepository.findById(userId).isEmpty()){
             throw new UserNotFoundException();
         }
